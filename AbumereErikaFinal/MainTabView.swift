@@ -12,18 +12,18 @@ struct MainTabView: View {
     
     var body: some View {
         TabView{
+            HomePage()
             TranscribePage()
                 .tabItem {
-                    Label("Transcribe", systemImage: "questionmark")
+                    Label("Transcribe", systemImage: "camera")
                 }
-            //FlashcardListPage()
+            Spacer()
+            MemoriesPage()
                 .tabItem {
-                    Label("Cards", systemImage: "square.stack.3d.up.fill")
+                    Label("Memories", systemImage: "heart")
                 }
-            //FavoritesFlashcardListPage()
-                .tabItem {
-                    Label("Favorites", systemImage: "star.fill")
-                }
+            Spacer()
+          
         }
         //.environmentObject(flashcardViewModel)
         
