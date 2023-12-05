@@ -20,6 +20,7 @@ struct MainTabView: View {
             Spacer()
             MemoriesPage()
                 .tabItem {
+                    //was heart
                     Label("Memories", systemImage: "heart")
                 }
             Spacer()
