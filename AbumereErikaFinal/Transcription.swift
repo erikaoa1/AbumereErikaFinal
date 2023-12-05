@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import UIKit
 
-struct Transcription : Hashable, Identifiable, Codable {
-    let id: UUID
-    let question: String
-    let answer: String
-    let isFavorite: Bool
+
+struct Transcription: Decodable  {
+    let caption: String
+    let caption_list: [String]
+    let caption_tags: String
+    let caption_GPTS: String
+    let tags: [String]
+    let categories: [String]
+    let moderate: String
+    let objects: [String]
+    let faces: [String]
+    let brands: [String]
+    let astica: String
     
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
+   
     
-    static func == (lhs: Transcription, rhs: Transcription) -> Bool {
-        return lhs.id == rhs.id
-    }
 }
+
+
