@@ -14,6 +14,8 @@
 		3FD54CEE2B1CDC1800983A1F /* AbumereErikaFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD54CED2B1CDC1800983A1F /* AbumereErikaFinalTests.swift */; };
 		3FD54CF82B1CDC1800983A1F /* AbumereErikaFinalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD54CF72B1CDC1800983A1F /* AbumereErikaFinalUITests.swift */; };
 		3FD54CFA2B1CDC1800983A1F /* AbumereErikaFinalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD54CF92B1CDC1800983A1F /* AbumereErikaFinalUITestsLaunchTests.swift */; };
+		3FE4DA132B1DC7FA00C98C01 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4DA122B1DC7FA00C98C01 /* MainTabView.swift */; };
+		3FE4DA152B1EC7C500C98C01 /* TranscribePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4DA142B1EC7C500C98C01 /* TranscribePage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		3FD54CF32B1CDC1800983A1F /* AbumereErikaFinalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AbumereErikaFinalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD54CF72B1CDC1800983A1F /* AbumereErikaFinalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbumereErikaFinalUITests.swift; sourceTree = "<group>"; };
 		3FD54CF92B1CDC1800983A1F /* AbumereErikaFinalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbumereErikaFinalUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3FE4DA122B1DC7FA00C98C01 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		3FE4DA142B1EC7C500C98C01 /* TranscribePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscribePage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,8 @@
 			children = (
 				3FD54CDC2B1CDC0C00983A1F /* AbumereErikaFinalApp.swift */,
 				3FD54CDE2B1CDC0C00983A1F /* ContentView.swift */,
+				3FE4DA122B1DC7FA00C98C01 /* MainTabView.swift */,
+				3FE4DA142B1EC7C500C98C01 /* TranscribePage.swift */,
 				3FD54CE02B1CDC1800983A1F /* Assets.xcassets */,
 				3FD54CE22B1CDC1800983A1F /* Preview Content */,
 			);
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FD54CDF2B1CDC0C00983A1F /* ContentView.swift in Sources */,
+				3FE4DA152B1EC7C500C98C01 /* TranscribePage.swift in Sources */,
 				3FD54CDD2B1CDC0C00983A1F /* AbumereErikaFinalApp.swift in Sources */,
+				3FE4DA132B1DC7FA00C98C01 /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
