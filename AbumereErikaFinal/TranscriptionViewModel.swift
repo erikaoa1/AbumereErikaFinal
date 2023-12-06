@@ -141,7 +141,6 @@ class TranscriptionViewModel: UIViewController, ObservableObject, CLLocationMana
         
             let formattedTime = convertTimestamp(timestamp)
             let location = await getLocationString()
-            print(location)
             
             //REMOVE QUOTES FROM CAPTION
             return ["caption", formattedTime, location]

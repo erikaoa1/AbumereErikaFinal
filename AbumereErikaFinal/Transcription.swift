@@ -12,10 +12,11 @@ import SwiftUI
 
 struct Transcription  {
     let id: UUID
-    let image: Image
+    let image: UIImage
     let description: String
     let location: String
     let timestamp: String
+    let isMemory: Bool
 }
 
 
