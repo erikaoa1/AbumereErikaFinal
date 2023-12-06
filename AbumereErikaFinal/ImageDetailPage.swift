@@ -34,9 +34,23 @@ struct ImageDetailPage: View {
     
     var body: some View {
         VStack{
-            Image(uiImage: image ?? Image(systemName: "logo"))
+            if let uiImage = image {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200)
+            }
+            Text(location)
+                .font(.caption)
+            Text(timestamp)
+                .font(.caption)
+            Spacer()
+            
+            Text(description)
+                .font(.subheadline)
             
         }
+        .navigationBarBackButtonHidden(false)
     }
 
     
