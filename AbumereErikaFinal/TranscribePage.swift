@@ -16,6 +16,7 @@ struct TranscribePage: View {
     @State private var selectedImage: Image?
     
     @State private var imageInfo: [String]?
+    @State private var userImage: UIImage?
     
     
     var body: some View {
@@ -37,7 +38,6 @@ struct TranscribePage: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 300, height: 300)
-                
             }
             
             if transcriptionViewModel.isLoading {
@@ -48,10 +48,9 @@ struct TranscribePage: View {
                 //let descriptions = transcriptionViewModel.descriptions
                 //Text("loaded")
                 if imageInfo != nil{
-                    //Transcription(id: UUID(),image: imageItem, description: self.description, answer: "Swift", isFavorite: false)
+                    var apiResults = Transcription(id: UUID(),image: userImage!, description: imageInfo![0], location: imageInfo![2], timestamp: imageInfo![1], isMemory: false)
+                    ImageDetailPage(transcription: apiResults)
                     
-                    Text(imageInfo![0])
-                    Text(imageInfo![1])
                 }
                 
             }
@@ -62,7 +61,7 @@ struct TranscribePage: View {
                     if let image = UIImage(data: data) {
                         //display the image
                         //selectedImage = Image(uiImage: image)
-                        
+                        userImage = image
                          await imageInfo =  transcriptionViewModel.getDescription(image: image)
                         //if else block use to be here
                     }
