@@ -10,6 +10,14 @@ import Foundation
 import UIKit
 
 class TranscriptionViewModel: ObservableObject {
+    
+    struct Response: Codable {
+        let caption_GPTS: String
+        // Add other properties as needed
+    }
+    
+    @Published var memories: [Transcription] = []
+    
     private let url = "https://vision.astica.ai/describe"
     private let apiKey = "E843F250-F8D2-45FA-AB61-C722E201A70882591561-BA9A-4859-AE59-F64CB368E550"
     let params = "gpt"
@@ -23,11 +31,10 @@ class TranscriptionViewModel: ObservableObject {
     @Published var isLoading = false
     @Published var descriptions: String = ""
 
-    func getDescription(image: UIImage) async {
+    func getDescription(image: UIImage) async -> String {
         
-        guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+         guard let imageData = image.jpegData(compressionQuality: 0.8) else {
             print("Failed to convert image to data")
-            return
         }
         let imageAsString = imageData.base64EncodedString()
 
@@ -37,24 +44,15 @@ class TranscriptionViewModel: ObservableObject {
             var request = URLRequest(url: URL(string: url)!)
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.httpMethod = "POST"
-            //request.setValue(apiKey, forHTTPHeaderField: "tkn")
-            //request.setValue("2.0_full", forHTTPHeaderField: "modelVersion")
-            //request.setValue(params, forHTTPHeaderField: "visionParams")
-            //request.setValue(imageAsString, forHTTPHeaderField: "input")
             
             let parameters = [
                 "tkn": apiKey,
                 "input": imageAsString,
                 "visionParams": params,
                 "modelVersion": "2.0_full"
-            
             ]
-            /*
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["tkn": apiKey])
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["input": imageAsString])
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["visionParams": params])
-            request.httpBody = try JSONSerialization.data(withJSONObject: ["modelVersion": "2.0_full"])
-*/
+
+
             let requestJSON = try? JSONSerialization.data(withJSONObject: parameters)
             request.httpBody = requestJSON
             
@@ -63,11 +61,11 @@ class TranscriptionViewModel: ObservableObject {
             //print raw json data
             //print(String(data: data, encoding: .utf8) ?? "Data is not valid UTF-8")
             
-            //let decoder = JSONDecoder()
-            //let results = try decoder.decode(String.self, from: data)
+            let decoder = JSONDecoder()
+            let results = try decoder.decode(Response.self, from: data)
             
-            //descriptions = results
-            
+            print(results.caption_GPTS)
+            return results.caption_GPTS
             
         } catch {
             //print("Error: \(error.localizedDescription)")
@@ -76,6 +74,6 @@ class TranscriptionViewModel: ObservableObject {
 
         isLoading = false
     }
-
+    return results.caption_GPTS
 
 }

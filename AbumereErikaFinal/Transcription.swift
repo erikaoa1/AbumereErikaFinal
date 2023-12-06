@@ -7,23 +7,15 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 
-struct Transcription: Decodable  {
-    let caption: String
-    let caption_list: [String]
-    let caption_tags: String
-    let caption_GPTS: String
-    let tags: [String]
-    let categories: [String]
-    let moderate: String
-    let objects: [String]
-    let faces: [String]
-    let brands: [String]
-    let astica: String
-    
-   
-    
+struct Transcription  {
+    let id: UUID
+    let image: Image
+    let description: String
+    let location: String
+    let timestamp: String
 }
 
 
