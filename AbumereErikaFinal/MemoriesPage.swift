@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 struct MemoriesPage: View {
-   // @EnvironmentObject var flashcardViewModel: FlashcardViewModel
+    @EnvironmentObject var transcriptionViewModel: TranscriptionViewModel
     
     var body: some View {
         NavigationStack {

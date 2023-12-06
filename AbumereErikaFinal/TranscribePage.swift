@@ -11,7 +11,7 @@ import SwiftUI
 import PhotosUI
 
 struct TranscribePage: View {
-    @StateObject var transcriptionViewModel = TranscriptionViewModel()
+    @EnvironmentObject var transcriptionViewModel: TranscriptionViewModel
     @State private var imageItem: PhotosPickerItem?
     @State private var selectedImage: Image?
     

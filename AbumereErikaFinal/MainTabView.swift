@@ -8,7 +8,7 @@ import Foundation
 import SwiftUI
 
 struct MainTabView: View {
-    //@StateObject var flashcardViewModel = FlashcardViewModel()
+    @StateObject var transcriptionViewModel = TranscriptionViewModel()
     
     var body: some View {
         TabView{
@@ -26,7 +26,7 @@ struct MainTabView: View {
             Spacer()
           
         }
-        //.environmentObject(flashcardViewModel)
+        .environmentObject(transcriptionViewModel)
         
     }
 }

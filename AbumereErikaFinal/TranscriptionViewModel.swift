@@ -12,13 +12,13 @@ import CoreLocation
 import MapKit
 
 
-class TranscriptionViewModel: ObservableObject {
+class TranscriptionViewModel: UIViewController, ObservableObject, CLLocationManagerDelegate  {
     
+
     struct Response: Decodable {
         let caption_GPTS: String
         // Add other properties as needed
     }
-    
     struct Time: Decodable {
         let datetime: String
     }
@@ -35,6 +35,15 @@ class TranscriptionViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var descriptions: String = ""
+    
+    //FOR LOCATION
+    let locationManager = CLLocationManager()
+
+    func requestPermission() {
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
     
     func getTime() async -> String {
         var request = URLRequest(url: URL(string: "https://worldtimeapi.org/api/timezone/America/Los_Angeles")!)
@@ -70,6 +79,24 @@ class TranscriptionViewModel: ObservableObject {
         } else {
             return "incorrect input format" // Return nil if the input timestamp is not in the expected format
         }
+    }
+    
+    func getLocationString() async -> String {
+        if let location = locationManager.location {
+            let geocoder = CLGeocoder()
+            if let placemark = try? await geocoder.reverseGeocodeLocation(location).first {
+                if let city = placemark.locality, let state = placemark.administrativeArea {
+                    return "\(city), \(state)"
+                }
+            }
+        }
+        print(locationManager.location)
+
+        return "no location found"
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location Manager Error: \(error.localizedDescription)")
     }
 
     func getDescription(image: UIImage) async -> [String] {
@@ -113,10 +140,11 @@ class TranscriptionViewModel: ObservableObject {
             let timestamp = await getTime()
         
             let formattedTime = convertTimestamp(timestamp)
-            print(formattedTime)
+            let location = await getLocationString()
+            print(location)
             
             //REMOVE QUOTES FROM CAPTION
-            return ["caption", formattedTime]
+            return ["caption", formattedTime, location]
             
         } catch {
             print("Error: \(error.localizedDescription)")
