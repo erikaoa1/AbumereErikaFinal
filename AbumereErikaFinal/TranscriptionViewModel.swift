@@ -11,7 +11,7 @@ import UIKit
 
 class TranscriptionViewModel: ObservableObject {
     
-    struct Response: Codable {
+    struct Response: Decodable {
         let caption_GPTS: String
         // Add other properties as needed
     }
@@ -19,22 +19,22 @@ class TranscriptionViewModel: ObservableObject {
     @Published var memories: [Transcription] = []
     
     private let url = "https://vision.astica.ai/describe"
-    private let apiKey = "E843F250-F8D2-45FA-AB61-C722E201A70882591561-BA9A-4859-AE59-F64CB368E550"
+    private let apiKey = "5E28F168-FB16-488D-8BD0-DF69D59185AECA2B5BAB-52BC-45FE-A025-4F0DE455E375"
     let params = "gpt"
     //works for describe
     //works for gpt
     // works for gpt_detailed
     //seems to only work with one param
     
-    
-
     @Published var isLoading = false
     @Published var descriptions: String = ""
+    
+    
 
     func getDescription(image: UIImage) async -> String {
         
          guard let imageData = image.jpegData(compressionQuality: 0.8) else {
-            print("Failed to convert image to data")
+             return "Image conversion failed"
         }
         let imageAsString = imageData.base64EncodedString()
 
@@ -63,17 +63,19 @@ class TranscriptionViewModel: ObservableObject {
             
             let decoder = JSONDecoder()
             let results = try decoder.decode(Response.self, from: data)
-            
-            print(results.caption_GPTS)
-            return results.caption_GPTS
+            let caption = results.caption_GPTS
+           
+            //print(caption)
+            isLoading = false
+            return caption
             
         } catch {
             //print("Error: \(error.localizedDescription)")
             print(String(describing: error))
         }
 
-        isLoading = false
+        return "results.caption_GPTS"
     }
-    return results.caption_GPTS
+    
 
 }
