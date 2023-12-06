@@ -12,8 +12,7 @@ import CoreLocation
 import MapKit
 
 
-class TranscriptionViewModel: UIViewController, ObservableObject, CLLocationManagerDelegate  {
-    
+class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableObject, CLLocationManagerDelegate  {
 
     struct Response: Decodable {
         let caption_GPTS: String
@@ -23,7 +22,63 @@ class TranscriptionViewModel: UIViewController, ObservableObject, CLLocationMana
         let datetime: String
     }
     
+    
     @Published var memories: [Transcription] = []
+    
+    //append given memory to memories array
+    func append(memory: Transcription){
+        memories.append(memory)
+    }
+    
+    func replaceOrAdd(old: Transcription, new: Transcription){
+        var added = false
+        
+        for i in 0..<memories.count{
+            if memories[i].id == new.id {
+                memories[i] = new
+                added = true
+            }
+        }
+        
+        if added == false{
+            append(memory: new)
+        }
+    }
+    
+    func toggleMemory(transcription: Transcription){
+        let tID = transcription.id
+        let tDiscription = transcription.description
+        let tImage = transcription.image
+        let tLocation = transcription.location //toggling favorite
+        let tTime = transcription.timestamp
+        
+        //always going to be true, bc transcription passed as parameter is the og transcription passed to ImageDetailPage
+        
+        var value = false
+        for i in 0..<memories.count{
+            //already in memories
+            if memories[i].id == transcription.id {
+                value = memories[i].isMemory
+                break
+            }
+        }
+        let tMemory = !value //toggling favorite
+        
+        let newT : Transcription = Transcription(id:tID, image: tImage, description: tDiscription, location: tLocation, timestamp: tTime, isMemory: tMemory)
+        
+        //add or replace this toggled transcription
+        replaceOrAdd(old: transcription, new: newT)
+    }
+    
+    func isLiked(transcription: Transcription) -> Bool{
+        for i in 0..<memories.count{
+            if memories[i].id == transcription.id {
+                return memories[i].isMemory == true
+            }
+        }
+        return false
+    }
+    
     
     private let url = "https://vision.astica.ai/describe"
     private let apiKey = "A4AFD649-BA3D-4F7E-AA97-F7A41020CB1653F47061-5460-44B7-821B-B4019478BDE5"
