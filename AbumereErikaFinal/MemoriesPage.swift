@@ -19,7 +19,7 @@ struct MemoriesPage: View {
                     //}
                 //}
             }
-            .navigationTitle("Favorites")
+            .navigationTitle("Memories")
         }
     }
 }

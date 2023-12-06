@@ -15,7 +15,7 @@ struct TranscribePage: View {
     @State private var imageItem: PhotosPickerItem?
     @State private var selectedImage: Image?
     
-    @State private var description: String?
+    @State private var imageInfo: [String]?
     
     
     var body: some View {
@@ -37,8 +37,11 @@ struct TranscribePage: View {
                 //fully loaded and api has returned descriptinos json
                 //let descriptions = transcriptionViewModel.descriptions
                 //Text("loaded")
-                if description != nil{
-                    Text(description!)
+                if imageInfo != nil{
+                    //Transcription(id: UUID(),image: imageItem, description: self.description, answer: "Swift", isFavorite: false)
+                    
+                    Text(imageInfo![0])
+                    Text(imageInfo![1])
                 }
                 
             }
@@ -50,7 +53,7 @@ struct TranscribePage: View {
                         //display the image
                         //selectedImage = Image(uiImage: image)
                         
-                         await description =  transcriptionViewModel.getDescription(image: image)
+                         await imageInfo =  transcriptionViewModel.getDescription(image: image)
                         //if else block use to be here
                     }
                 }
