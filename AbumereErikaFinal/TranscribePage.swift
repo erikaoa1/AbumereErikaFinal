@@ -20,15 +20,16 @@ struct TranscribePage: View {
     
     var body: some View {
         VStack {
+            Spacer()
+
             Text("Upload an Image")
                 .font(.title)
-            Spacer()
             Spacer()
             Spacer()
             PhotosPicker(selection: $imageItem, matching: .images, label: {
                 // Custom button design using an Image
                 Image("uploadButton")
-                    .frame(width: 150, height: 150)
+                    .frame(width: 100, height: 100)
             })
             
             if let selectedImage {
