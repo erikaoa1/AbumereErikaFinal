@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "06D3A303-743B-4BAA-B1EA-EF89E3FFC679"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "479482C4-6534-444C-8FFC-C18E4FED097C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AbumereErikaFinal/TranscriptionViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "getDescription(image:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "479482C4-6534-444C-8FFC-C18E4FED097C - 8aef184198665b97"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for AbumereErikaFinal.TranscriptionViewModel.getDescription(image: __C.UIImage) async -&gt; ()"
+                  moduleName = "AbumereErikaFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/student/Desktop/AbumereErikaFinal/AbumereErikaFinal/TranscriptionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "369">
+               </Location>
+               <Location
+                  uuid = "479482C4-6534-444C-8FFC-C18E4FED097C - 9fbded73b7133988"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for AbumereErikaFinal.TranscriptionViewModel.getDescription(image: __C.UIImage) async -&gt; ()"
+                  moduleName = "AbumereErikaFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/student/Desktop/AbumereErikaFinal/AbumereErikaFinal/TranscriptionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "352">
+               </Location>
+               <Location
+                  uuid = "479482C4-6534-444C-8FFC-C18E4FED097C - 9fbded73b7133988"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for AbumereErikaFinal.TranscriptionViewModel.getDescription(image: __C.UIImage) async -&gt; ()"
+                  moduleName = "AbumereErikaFinal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/student/Desktop/AbumereErikaFinal/AbumereErikaFinal/TranscriptionViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "591">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
