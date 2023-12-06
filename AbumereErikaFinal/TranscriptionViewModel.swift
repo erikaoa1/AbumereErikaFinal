@@ -8,6 +8,9 @@
 
 import Foundation
 import UIKit
+import CoreLocation
+import MapKit
+
 
 class TranscriptionViewModel: ObservableObject {
     
