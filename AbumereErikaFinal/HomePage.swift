@@ -23,26 +23,19 @@ struct HomePage: View {
                         .aspectRatio(contentMode: .fit) // Keeps the image's aspect ratio
                         .frame(width: 200, height: 200) // Sets a fixed size for the image
                  Spacer()
-                
-                
             }  //end of vstack
             .onAppear{
-                //randomize first card
-               // flashcardViewModel.randomize()
-                //fav = isFavorite
                 transcriptionViewModel.requestPermission()
-                
             }
             
             .background(Color.white)
-          
-            
-          
-                    }
-                }
-            
             
         }
+
+        
+    }
+    
+}
  
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {

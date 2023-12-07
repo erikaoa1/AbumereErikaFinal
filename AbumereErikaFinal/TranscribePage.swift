@@ -27,7 +27,7 @@ struct TranscribePage: View {
             VStack {
                 //Spacer()
                 //Spacer()
-                Spacer()
+                //Spacer()
                 PhotosPicker(selection: $imageItem, matching: .images, label: {
                     // Custom button design using an Image
                     Image("uploadButton")

@@ -76,14 +76,11 @@ struct ImageDetailPage: View {
                 .font(.caption)
             Text(timestamp)
                 .font(.caption)
-            //Spacer()
+            Spacer()
             
             Text(description)
                 .font(.title3)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.black, lineWidth: 2)
-                )
+            Spacer()
             
         }
         .navigationBarBackButtonHidden(false)
