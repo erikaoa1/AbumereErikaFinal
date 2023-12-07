@@ -22,6 +22,8 @@ struct TranscribePage: View {
     @State var apiResults: Transcription?
     @State private var resultsReady = false
     
+    @State private var v2Checked = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -33,6 +35,16 @@ struct TranscribePage: View {
                     Image("uploadButton")
                         .frame(width: 100, height: 100)
                 })
+                Spacer()
+                HStack{
+                    Toggle(isOn: $v2Checked) {
+                        Text("PicSense Pro")
+                    }
+                    .padding()
+                    Text("Please note that PicSense Pro takes quite longer to generate a description.")
+                        .font(.caption)
+                }
+            
                 
                 if let selectedImage {
                     selectedImage
@@ -50,8 +62,17 @@ struct TranscribePage: View {
                     //Text("loaded")
                     if imageInfo != nil{
                         
-                        NavigationLink("transcribe page", destination: ImageDetailPage(transcription: apiResults), isActive: $resultsReady)
-                            .hidden()
+                        if (v2Checked){
+                            //v2 -- gpt_detailed
+                            NavigationLink("transcribe page", destination: DetailPage2(transcription: apiResults), isActive: $resultsReady)
+                                .hidden()
+                            
+                        }else{
+                            //v1 -- standard gpt
+                            NavigationLink("transcribe page", destination: DetailPage1(transcription: apiResults), isActive: $resultsReady)
+                                .hidden()
+                        }
+                    
                     }
                     
                 }
@@ -63,7 +84,11 @@ struct TranscribePage: View {
                             //display the image
                             //selectedImage = Image(uiImage: image)
                             userImage = image
-                            await imageInfo =  transcriptionViewModel.getDescription(image: image)
+                            if (v2Checked){
+                                await imageInfo =  transcriptionViewModel.getDescription(image: image, param: "gpt_detailed")
+                            }else{
+                                await imageInfo =  transcriptionViewModel.getDescription(image: image, param: "gpt")
+                            }
                             
                             
                             apiResults = Transcription(id: UUID(),image: image, description: imageInfo![0], location: imageInfo![2], timestamp: imageInfo![1], isMemory: false)

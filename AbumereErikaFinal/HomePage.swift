@@ -29,10 +29,7 @@ struct HomePage: View {
             }
             
             .background(Color.white)
-            
         }
-
-        
     }
     
 }

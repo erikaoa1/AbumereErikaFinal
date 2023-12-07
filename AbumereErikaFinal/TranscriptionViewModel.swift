@@ -82,7 +82,7 @@ class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableOb
     
     private let url = "https://vision.astica.ai/describe"
     private let apiKey = "A4AFD649-BA3D-4F7E-AA97-F7A41020CB1653F47061-5460-44B7-821B-B4019478BDE5"
-    let params = "gpt"
+    //let params = "gpt"
     //works for describe
     //works for gpt
     // works for gpt_detailed
@@ -154,7 +154,7 @@ class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableOb
         print("Location Manager Error: \(error.localizedDescription)")
     }
 
-    func getDescription(image: UIImage) async -> [String] {
+    func getDescription(image: UIImage, param: String) async -> [String] {
         
          guard let imageData = image.jpegData(compressionQuality: 0.8) else {
              return ["Image conversion failed"]
@@ -171,7 +171,7 @@ class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableOb
             let parameters = [
                 "tkn": apiKey,
                 "input": imageAsString,
-                "visionParams": params,
+                "visionParams": param,
                 "modelVersion": "2.0_full"
             ]
 

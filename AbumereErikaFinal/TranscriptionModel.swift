@@ -24,7 +24,7 @@ protocol TranscriptionModel {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     
-    func getDescription(image: UIImage) async -> [String]
+    func getDescription(image: UIImage, param: String) async -> [String]
         
     func replaceOrAdd(old: Transcription, new: Transcription)
     
