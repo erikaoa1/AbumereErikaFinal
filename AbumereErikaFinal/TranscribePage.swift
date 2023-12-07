@@ -25,11 +25,8 @@ struct TranscribePage: View {
     var body: some View {
         NavigationView {
             VStack {
-                Spacer()
-                
-                Text("Upload an Image")
-                    .font(.title)
-                Spacer()
+                //Spacer()
+                //Spacer()
                 Spacer()
                 PhotosPicker(selection: $imageItem, matching: .images, label: {
                     // Custom button design using an Image

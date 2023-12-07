@@ -97,12 +97,7 @@ struct ImagePage: View {
     
     
     
-    
-    
-    
-   // var isFavorite : Bool{
-       // return flashcardViewModel.currentFlashcard?.isFavorite == true
-   // }
+
     
     @State private var fav = false
 

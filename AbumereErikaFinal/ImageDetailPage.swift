@@ -20,6 +20,8 @@ struct ImageDetailPage: View {
     @State private var location = ""
     @State private var timestamp = ""
     @State private var isMemory = false
+    @State private var fav = false
+
 
     
     init(transcription: Transcription? = nil) {
@@ -32,14 +34,16 @@ struct ImageDetailPage: View {
             
             _isMemory = State(initialValue: transcription.isMemory)
             _image = State(initialValue: transcription.image)
+            _fav = State(initialValue: transcription.isMemory)
         }
     }
     
     var isHearted : Bool{
+        
         return transcriptionViewModel.isLiked(transcription: transcription!) == true
     }
     
-    @State private var fav = false
+    //@State private var fav = false
     
     func heartClicked(){
         transcriptionViewModel.toggleMemory(transcription: transcription!)
@@ -72,7 +76,7 @@ struct ImageDetailPage: View {
                 .font(.caption)
             Text(timestamp)
                 .font(.caption)
-            Spacer()
+            //Spacer()
             
             Text(description)
                 .font(.title3)

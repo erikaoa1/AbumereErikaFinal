@@ -180,15 +180,15 @@ class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableOb
             request.httpBody = requestJSON
             
             //call to astica -- UNCOMMENT THIS 1
-            //let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, _) = try await URLSession.shared.data(for: request)
             
             //print raw json data
             //print(String(data: data, encoding: .utf8) ?? "Data is not valid UTF-8")
             
             //UNCOMMENT THESE 3
-            //let decoder = JSONDecoder()
-           // let results = try decoder.decode(Response.self, from: data)
-          //  let caption = results.caption_GPTS
+            let decoder = JSONDecoder()
+            let results = try decoder.decode(Response.self, from: data)
+            let caption = results.caption_GPTS
            
             //print(caption)
             isLoading = false
@@ -198,7 +198,7 @@ class TranscriptionViewModel: UIViewController, TranscriptionModel, ObservableOb
             let location = await getLocationString()
             
             //REMOVE QUOTES FROM CAPTION
-            return ["caption", formattedTime, location]
+            return [caption, formattedTime, location]
             
         } catch {
             print("Error: \(error.localizedDescription)")
